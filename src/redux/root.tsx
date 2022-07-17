@@ -4,7 +4,7 @@ import { JWT } from "./store/jwt";
 
 export const rootReducer = combineReducers({
     jwt: JWT,
-    todo: Todo
+    todo: Todo,
 });
 
 export const store = createStore(rootReducer);

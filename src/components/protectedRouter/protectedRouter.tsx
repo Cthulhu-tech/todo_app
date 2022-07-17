@@ -9,7 +9,7 @@ export const ProtectedRouter = () => {
     const location = useLocation();
     const jwt = useSelector((state:ReduxStore) => state.jwt);
 
-    return<Outlet/>
+    return <Outlet/>
     
     // if(!jwt.user.jwt){
 
