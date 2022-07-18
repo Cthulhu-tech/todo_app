@@ -1,0 +1,66 @@
+.container {
+
+    width: 100%;
+    display: flex;
+    min-height: 60px;
+    align-items: center;
+    justify-content: space-around;
+
+}
+
+.link {
+
+    padding: 5px;
+    color:  gray;
+    margin: 0 20px;
+    transition: 0.5s;
+    padding: 5px auto;
+    text-align: center;
+    position: relative;
+    text-decoration: none;
+    text-transform: capitalize;
+
+    &:hover::before, &:hover::after{
+
+        width: 100%;
+        border-top: 1px solid gray;
+        
+    }
+
+    &::before{
+
+        right: 0;
+        bottom: 0;
+
+    }
+
+    &::after{
+
+        top: 0;
+        left: 0;
+
+    }
+
+    &::before, &::after{
+
+        width: 0;
+        content: '';
+        position: absolute;
+        box-sizing: border-box;
+        transition: all 0.4s linear, opacity 0.1s 0.4s;
+
+    }
+
+}
+
+.active {
+
+    color:  black;
+    &::before, &::after{
+
+        width: 100%;
+        border-top: 1px solid black;
+        
+    }
+
+}

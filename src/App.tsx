@@ -1,8 +1,8 @@
 import { ProtectedRouter } from "./components/protectedRouter/protectedRouter";
-import { Registration } from "./views/registration/registration";
+import { Registration } from "./views/authorization/registration/registration";
+import { Login } from "./views/authorization/login/login";
 import { BrowserRouter } from "react-router-dom";
 import { Route, Routes } from "react-router";
-import { Login } from "./views/login/login";
 import { Home } from "./views/home/home";
 import { Layout } from "./layout/layout";
 

@@ -1,0 +1,16 @@
+@mixin btn($color1, $color2){
+
+    border: none;
+    outline: none;
+    transition: .5s;
+    padding: 10px 35px;
+    border-radius: 8px;
+    background-color: $color1;
+
+    &:hover {
+
+        background-color: $color2;
+
+    }
+
+}
