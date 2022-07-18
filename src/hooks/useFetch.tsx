@@ -8,13 +8,14 @@ export const useFetch = (url: string) => {
 
     useEffect(() => {
 
-        fetch(url, {
+        fetch(process.env.REACT_APP_SERVER + url, {
             method: 'POST',
             mode: 'cors',
-            cache: 'no-cache',
-            credentials: 'same-origin',
+            redirect: 'follow',
+            credentials: 'include',
             headers: {
-                'Content-Type': 'application/json'
+                'Content-type': 'application/json',
+                'Accept': 'application/json'
             },
         }).then((response) => {
 
