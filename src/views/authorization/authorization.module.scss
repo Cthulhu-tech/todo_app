@@ -1,0 +1,82 @@
+@import "../../style/mixin.scss";
+@import "../../style/color.scss";
+
+.main {
+
+    margin: 0 auto;
+    width: clamp(200px, calc(100% - 200px), 1200px);
+
+    @media screen and (max-width: 768px) {
+        
+        width: 100%;
+
+    }
+
+}
+
+.section {
+
+    width: 100%;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: flex-start;
+    min-height: calc(100vh - 80px);
+
+}
+
+.authorization_container {
+
+    width: 100%;
+    display: flex;
+    margin-top: 50px;
+    min-height: 250px;
+    align-items: center;
+    flex-direction: column;
+    justify-content: flex-start;
+
+}
+
+.form {
+
+    width: 100%;
+    display: flex;
+    min-height: 250px;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+
+}
+
+.input {
+
+    margin: 5px;
+    width: 280px;
+    outline: none;
+    padding: 5px 10px;
+    border: 1px solid #eee;
+    text-transform: capitalize;
+
+}
+
+.button{
+
+    @include btn($blue100, $blue200);
+
+}
+
+.message{
+
+    padding: 5px;
+    color: green;
+    user-select: none;
+
+}
+
+.error{
+
+    padding: 5px;
+    color: red;
+    user-select: none;
+
+}
