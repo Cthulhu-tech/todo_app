@@ -8,11 +8,7 @@ export const Registration = () => {
     
     const { data, values, onChange, handlerForm } = useForm("regist");
 
-    useEffect(() => {
-
-        console.log(values)
-
-    },[values]);
+    useEffect(() => {},[values, data]);
 
     return <main className={styles.main}>
         <section className={styles.section}>

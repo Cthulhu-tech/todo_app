@@ -21,7 +21,7 @@ export const Login = () => {
         
             }}));
 
-    },[values]);
+    },[values, data]);
 
     return <main className={styles.main}>
         <section className={styles.section}>
