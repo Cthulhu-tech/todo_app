@@ -1,9 +1,30 @@
-import { useInput } from "../../hooks/useInput";
+import visibleImg from "../../assets/password/visible.png";
+import hiddenImg from "../../assets/password/hidden.png";
+import { IInput } from "../../interface/input";
+import styles from "./password.module.scss";
+import { useState } from "react";
 
-export const PasswordInput = () => {
+export const PasswordInput = ({value, onChange}: IInput) => {
 
-    const {value, onChange} = useInput("");
+    const [visible, setVisible] = useState(false);
 
-    return <input type="password" onChange={onChange} value={value}/>
+    const imgHandler = () => setVisible(!visible);
 
+    return <div className={styles.input_container}>
+                <input
+                    className={styles.input}
+                    type={visible ? "text" : "password"} 
+                    onChange={onChange} 
+                    value={value} 
+                    name="password"
+                    placeholder="password"
+                />
+                <img
+                    className={styles.input_img}
+                    onClick={imgHandler} 
+                    src={visible ? visibleImg : hiddenImg} 
+                    alt={visible ? 'visible' : 'hidden'} 
+                />
+            </div>
+    
 }
