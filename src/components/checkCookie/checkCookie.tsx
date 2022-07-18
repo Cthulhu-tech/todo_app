@@ -9,7 +9,7 @@ export const CheckCookie = (props: { children: React.ReactNode }) => {
 
     const dispatch = useDispatch();
     const {load, data, error} = useFetch('refresh');
-    console.log(data);
+
     if(load) return <Loading/>
     if(error) return <Error error={error}/>
     if(data.error) return <Error error={data.error}/>

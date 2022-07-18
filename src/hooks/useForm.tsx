@@ -15,7 +15,7 @@ export const useForm = (url: string) => {
                 method: 'POST',
                 mode: 'cors',
                 cache: 'no-cache',
-                credentials: 'same-origin',
+                credentials: "include",
                 headers: {
                     'Content-Type': 'application/json'
                 },

@@ -3,11 +3,17 @@ import { CheckCookie } from "../checkCookie/checkCookie";
 import { ReduxStore } from "../../interface/redux";
 import { useSelector } from "react-redux";
 import jwt_decode from "jwt-decode";
+import { useEffect } from "react";
 
 export const ProtectedRouter = () => {
 
     const location = useLocation();
     const jwt = useSelector((state:ReduxStore) => state.jwt);
+
+    useEffect(() => {
+
+
+    }, [jwt])
 
     if(!jwt.user.jwt){
 

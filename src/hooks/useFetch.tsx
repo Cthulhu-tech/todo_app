@@ -12,7 +12,7 @@ export const useFetch = (url: string) => {
             method: 'POST',
             mode: 'cors',
             redirect: 'follow',
-            credentials: 'include',
+            credentials: "include",
             headers: {
                 'Content-type': 'application/json',
                 'Accept': 'application/json'
