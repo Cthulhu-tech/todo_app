@@ -1,6 +1,6 @@
-import visibleImg from "../../assets/password/visible.png";
-import hiddenImg from "../../assets/password/hidden.png";
-import { IInput } from "../../interface/input";
+import visibleImg from "../../../assets/password/visible.png";
+import hiddenImg from "../../../assets/password/hidden.png";
+import { IInput } from "../../../interface/input";
 import styles from "./password.module.scss";
 import { useState } from "react";
 

@@ -1,0 +1,52 @@
+@import "../../../style/mixin.scss";
+@import "../../../style/color.scss";
+
+.input_add {
+
+    width: 100%;
+    padding: 10px;
+    outline: none;
+    font-weight: bold;
+    border: 1px solid rgb(95, 95, 95);
+
+}
+
+.sub-input_container {
+
+    display: flex;
+    margin: 15px auto;
+    align-items: center;
+    flex-direction: row;
+    justify-content: space-between;
+    width: clamp(100px, 80%, 800px);
+
+}
+
+.container_input{
+
+    width: 100%;
+
+}
+
+.btn_add {
+
+    color: white;
+    font-weight: bold;
+    @include btn($blue100, $blue200);
+
+}
+
+.link {
+
+    color: gray;
+    font-weight: bold;
+    text-decoration: none;
+
+}
+
+.active {
+
+    color: $blue100;
+    border-bottom: 2px solid;
+
+}
