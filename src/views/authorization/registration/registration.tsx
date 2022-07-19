@@ -1,4 +1,4 @@
-import { PasswordInput } from "../../../components/input/password";
+import { PasswordInput } from "../../../components/input/password/password";
 import { Switch } from "../../../components/switch/switch";
 import styles from "../authorization.module.scss";
 import { useForm } from "../../../hooks/useForm";
