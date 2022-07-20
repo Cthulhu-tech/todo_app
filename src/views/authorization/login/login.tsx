@@ -1,10 +1,10 @@
 import { PasswordInput } from "../../../components/input/password/password";
 import { Switch } from "../../../components/switch/switch";
+import { updateToken } from "../../../redux/store/jwt";
 import styles from "../authorization.module.scss";
 import { useForm } from "../../../hooks/useForm";
 import { useDispatch } from "react-redux";
 import { useEffect } from "react";
-import { updateToken } from "../../../redux/store/jwt";
 
 export const Login = () => {
     
