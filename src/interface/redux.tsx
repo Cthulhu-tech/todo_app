@@ -18,7 +18,8 @@ export type UserDataType = {
 
     userData: {
 
-        todo: TodoType[],
+        todo_pendings: TodoType[],
+        todo_completed: TodoType[],
 
     }
     
