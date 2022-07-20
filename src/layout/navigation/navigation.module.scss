@@ -3,7 +3,20 @@
 .navigation {
 
     width: 100%;
+    display: flex;
     min-height: 80px;
+    align-items: center;
+    justify-content: flex-end;
     background-color: $blue200;
 
+}
+
+.paragraph{
+
+    color: white;
+    font-weight: bold;
+    user-select: none;
+    margin-right: 20px;
+    text-transform: uppercase;
+    
 }
