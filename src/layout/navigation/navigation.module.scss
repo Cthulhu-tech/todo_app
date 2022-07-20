@@ -1,4 +1,5 @@
 @import '../../style/color.scss';
+@import '../../style/mixin.scss';
 
 .navigation {
 
@@ -11,12 +12,20 @@
 
 }
 
-.paragraph{
+.paragraph {
 
     color: white;
+    transition: .2s;
     font-weight: bold;
     user-select: none;
     margin-right: 20px;
     text-transform: uppercase;
     
+}
+
+.lagout:hover{
+
+    color: gray;
+    cursor: pointer;
+
 }
