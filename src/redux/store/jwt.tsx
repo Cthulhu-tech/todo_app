@@ -1,4 +1,4 @@
-import { Action, JwtType } from "../../interface/redux"
+import { Action, JwtType } from "../../interface/redux";
 
 const defaultState = {
 
@@ -13,13 +13,13 @@ const defaultState = {
 
 export const JWT = (state = defaultState, action:Action<string, JwtType>) => {
     switch (action.type){
-        case "update": 
+        case "update_jwt": 
             return {...state, ...action.payload}
-        case "delete":
-            return {...state, ...{user: null, jwt: null}}
+        case "delete_jwt":
+            return {...state, user: null}
         default:
             return state;
     }
 }
 
-export const updateToken = (payload: JwtType) => ({ type: "update", payload });
+export const updateToken = (payload: JwtType) => ({ type: "update_jwt", payload });
