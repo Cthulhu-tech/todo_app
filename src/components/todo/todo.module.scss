@@ -1,0 +1,78 @@
+@import '../../style/color.scss';
+
+.article {
+
+    display: flex;
+    min-height: 50px;
+    margin: 20px auto;
+    align-items: center;
+    border: 1px solid #eee;
+    width: clamp(280px, calc(80% - 32px), 800px);
+
+}
+
+.todo_container{
+
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+}
+
+.paragraph_text {
+
+    width: 100%;
+    margin: 0 10px;
+
+}
+
+.paragraph_time {
+
+    display: flex;
+    padding: 0 5px;
+    cursor: default;
+    min-height: 50px;
+    text-align: center;
+    align-items: center;
+    align-content: center;
+    justify-content: center;
+    width: min(100px, 100px);
+    background-color: #eee;
+
+}
+
+.paragraph_close{
+
+    height: 50px;
+    display: flex;
+    color: gray;
+    cursor: pointer;
+    transition: .5s;
+    min-width: 50px;
+    align-items: center;
+    align-content: center;
+    background-color: $red;
+    justify-content: center;
+
+    &:hover{
+
+        color: black;
+
+    }
+
+}
+
+.button {
+
+    height: 50px;
+    display: flex;
+    min-width: 50px;
+    cursor: pointer;
+    transition: .5s;
+    align-items: center;
+    align-content: center;
+    justify-content: center;
+    background-color: $blue100;
+
+}
