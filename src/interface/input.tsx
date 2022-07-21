@@ -14,3 +14,10 @@ export type formResponse = {
     accesstoken?: string;
 
 }
+
+export type inputData = {
+
+    login?: string;
+    password?: string;
+
+}

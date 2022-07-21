@@ -27,9 +27,11 @@ export type UserDataType = {
 
 export type TodoType = {
 
-    id: number | null,
-    date: string | null,
-    description: string | null,
+    id: number
+    user_id: number
+    todo_time_start: string
+    todo_time_end: string
+    todo_text: string
 
 }
 
