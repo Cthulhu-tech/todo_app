@@ -1,16 +1,16 @@
+import { formResponse, inputData } from "../interface/input";
 import { useState } from "react";
-import { formResponse } from "../interface/input";
 
 export const useForm = (url: string) => {
 
     const [data, setData] = useState<formResponse>();
-    const [values, setValue] = useState({password: "", login: ""});
+    const [values, setValue] = useState<inputData>();
 
     const handlerForm = (event: React.FormEvent<HTMLFormElement>) => {
 
         event.preventDefault();
 
-        if(values.login.length > 0 && values.password.length > 0) 
+        if(!!values && !!values.login && !!values.password)
             fetch(process.env.REACT_APP_SERVER + url, {
                 method: 'POST',
                 mode: 'cors',
