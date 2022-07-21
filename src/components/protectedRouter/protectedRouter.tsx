@@ -7,13 +7,13 @@ import { useEffect } from "react";
 export const ProtectedRouter = () => {
 
     const location = useLocation();
-    const jwt = useSelector((state:ReduxStore) => state.jwt);
+    const jwt = useSelector((state:ReduxStore) => state.jwt.user.jwt);
 
     useEffect(() => { }, [jwt])
 
-    if(!jwt.user.jwt){
+    if(jwt === null){
         
-        return <CheckCookie><Outlet/></CheckCookie>
+        return <CheckCookie />
 
     }else{
 
