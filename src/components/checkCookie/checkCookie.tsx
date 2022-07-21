@@ -16,7 +16,7 @@ export const CheckCookie = (props: { children: React.ReactNode }) => {
     const jwt = useSelector((state:ReduxStore) => state.jwt);
 
     useEffect(() => {
-
+        
         if(data?.auth && data.login && data.accesstoken){
 
             dispatch(updateToken({user: {

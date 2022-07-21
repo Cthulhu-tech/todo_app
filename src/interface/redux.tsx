@@ -18,8 +18,8 @@ export type UserDataType = {
 
     userData: {
 
-        todo_pendings: TodoType[],
-        todo_completed: TodoType[],
+        todo_pendings: TodoType[] | null,
+        todo_completed: TodoType[] | null,
 
     }
     
@@ -27,7 +27,7 @@ export type UserDataType = {
 
 export type TodoType = {
 
-    id: string | null,
+    id: number | null,
     date: string | null,
     description: string | null,
 
@@ -36,6 +36,6 @@ export type TodoType = {
 export type ReduxStore = {
 
     jwt: JwtType,
-    todo: TodoType
+    todo: UserDataType
 
 }
