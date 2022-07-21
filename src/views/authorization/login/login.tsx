@@ -28,8 +28,8 @@ export const Login = () => {
             <Switch/>
             <form onSubmit={handlerForm} className={styles.form}>
                 <div className={styles.authorization_container}>
-                    <input placeholder="login" className={styles.input} type="text" onChange={onChange} value={values.login} name="login"/>
-                    <PasswordInput value={values.password} onChange={onChange} />
+                    <input placeholder="login" className={styles.input} type="text" onChange={onChange} value={values ? values.login : ""} name="login"/>
+                    <PasswordInput value={values && values.password ? values.password : ""} onChange={onChange} />
                 </div>
                 <button type="submit" className={styles.button}>login</button>
             </form>

@@ -17,7 +17,7 @@ export const Home = () => {
         if(todo.todo.userData.todo_completed === null && todo.todo.userData.todo_pendings === null)
             dispatch(FetchDataTodo(todo.jwt.user.jwt) as any);
 
-    },  []);
+    }, [todo]);
 
     return <main className={styles.main}>
         <section className={styles.container_todo}>
