@@ -1,39 +1,55 @@
-import { Navigate, Outlet, useLocation } from "react-router";
+import { Navigate, useLocation, Outlet } from 'react-router';
 import { updateToken } from "../../redux/store/jwt";
-import { ReduxStore } from "../../interface/redux";
-import { useFetch } from "../../hooks/useFetch";
 import { Error } from "../../views/error/error";
 import { Loading } from "../loading/loading";
+import { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
-import { useSelector } from "react-redux";
-import { useEffect } from "react";
 
-export const CheckCookie = (props: { children: React.ReactNode }) => {
+export const CheckCookie = () => {
 
     const dispatch = useDispatch();
     const location = useLocation();
-    const {load, data, error} = useFetch('refresh');
-    const jwt = useSelector((state:ReduxStore) => state.jwt);
+    const [load, setLoad] = useState(true);
+    const [error, setError] = useState<Error>();
 
     useEffect(() => {
-        
-        if(data?.auth && data.login && data.accesstoken){
 
-            dispatch(updateToken({user: {
+            fetch(process.env.REACT_APP_SERVER + 'refresh', {
+                method: 'POST',
+                mode: 'cors',
+                redirect: 'follow',
+                credentials: "include",
+                headers: {
+                    'Content-type': 'application/json',
+                    'Accept': 'application/json'
+                },
+            }).then((response) => {
+    
+                return response.json();
+    
+            }).then((json) => {
+    
+                setLoad(false);
 
-                login: data.login,
-                jwt: data.accesstoken,
-        
-            }}));
+                dispatch(updateToken({user: {
 
-        }
+                    login: json.login,
+                    jwt: json.accesstoken,
+            
+                }}));
+    
+            }).catch((err) => {
+    
+                setLoad(false);
 
-    },[load, data, jwt])
+                return setError(err);
+    
+            });
+
+    }, []);
 
     if(load) return <Loading/>
     if(error) return <Error error={error}/>
-    if(data.error) return <Error error={data.error}/>
-    if(jwt.user.jwt !== null) return <>{props.children}</>
     if(location.pathname !== '/login' && location.pathname !== '/registration') return <Navigate to="/login" replace={true} />
 
     return <Outlet/>
