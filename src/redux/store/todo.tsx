@@ -17,9 +17,10 @@ const deleteTodoPending = "deletePendings";
 const deleteTodoCompleted = "deleteCompleted";
 
 export const Todo = (state = defaultState, action:Action<string, UserDataType | TodoType>) => {
+    console.log(action.payload)
     switch (action.type){
         case updateTodo:
-            return {...state, ...action.payload}
+            return {...state, userData: { todo_pendings: (action.payload as UserDataType).userData.todo_pendings, todo_completed: (action.payload as UserDataType).userData.todo_completed}}
         case deleteTodoPending:
             return {...state, todo_pendings: (state.userData.todo_pendings as TodoType[]).filter((todo) => todo.id !== (action.payload as TodoType).id)}
         case deleteTodoCompleted:

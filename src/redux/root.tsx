@@ -8,4 +8,6 @@ export const rootReducer = combineReducers({
     todo: Todo,
 });
 
+export type AppDispatch = typeof store.dispatch
+
 export const store = createStore(rootReducer, applyMiddleware(thunk));
