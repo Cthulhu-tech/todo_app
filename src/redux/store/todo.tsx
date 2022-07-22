@@ -43,7 +43,7 @@ export const Todo = (state = defaultState, action:Action<string, UserDataType | 
     }
 }
 
-export const addTodoSync = (payload: TodoType[]) => ({ type: updateTodo, payload });
+export const addTodoSync = (payload: TodoType[]) => ({ type: addTodo, payload });
 export const updateTodoAsync = (payload: UserDataType[]) => ({ type: updateTodo, payload });
 export const deletePending = (payload: number) => ({ type: deleteTodoPending, payload });
 export const deleteCompleted = (payload: number) => ({ type: deleteTodoCompleted, payload });
