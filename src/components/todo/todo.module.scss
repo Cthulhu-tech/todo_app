@@ -5,6 +5,7 @@
     display: flex;
     min-height: 50px;
     margin: 20px auto;
+    position: relative;
     align-items: center;
     border: 1px solid #eee;
     width: clamp(280px, calc(80% - 32px), 800px);
@@ -82,5 +83,16 @@
     align-content: center;
     justify-content: center;
     background-color: $blue100;
+
+}
+
+.load{
+
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    position: absolute;
+    background-color: rgba(128, 128, 128, 0.1);
 
 }
