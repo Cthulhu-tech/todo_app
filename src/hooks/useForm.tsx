@@ -17,7 +17,8 @@ export const useForm = (url: string) => {
                 cache: 'no-cache',
                 credentials: "include",
                 headers: {
-                    'Content-Type': 'application/json'
+                    'Content-type': 'application/json',
+                    'Accept': 'application/json'
                 },
                 
                 body: JSON.stringify(values)
