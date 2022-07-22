@@ -33,7 +33,7 @@ export const AddInput = () => {
 
             dispatch(addTodoSync([{id: Math.random(), user_id: 0, todo_time_start: Timestamp(), todo_text: input.text, completed: 0}]));
 
-        })
+        });
 
     }
 

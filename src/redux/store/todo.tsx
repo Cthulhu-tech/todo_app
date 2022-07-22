@@ -12,7 +12,7 @@ const defaultState:UserDataType = {
 
 }
 
-const addTodo = "addTodo";
+const addTodo = "addTodonew";
 const updateTodo = "update";
 const deleteTodoPending = "deletePendings";
 const deleteTodoCompleted = "deleteCompleted";
@@ -23,7 +23,7 @@ const completedTodoPendings = "completedTodo";
 export const Todo = (state = defaultState, action:Action<string, UserDataType | TodoType[] | number>) => {
     switch (action.type){
         case addTodo:
-            return {...state, userData: {todo_pendings: {...(action.payload as UserDataType).userData.todo_pendings, ...(action.payload as TodoType[])}, todo_completed: (action.payload as UserDataType).userData.todo_completed}};
+            return {...state, userData: {todo_pendings: [...(state.userData.todo_pendings as TodoType[]), ...(action.payload as TodoType[])], todo_completed: state.userData.todo_completed}};
         case updateTodo:
             return {...state, userData: {todo_pendings: (action.payload as UserDataType).userData.todo_pendings, todo_completed: (action.payload as UserDataType).userData.todo_completed}};
         case deleteTodoPending:
