@@ -13,7 +13,7 @@ export const Home = () => {
     const todo = useSelector((state:ReduxStore) => state);
 
     useEffect(() => {
-
+        console.log(todo)
         if(todo.todo.userData.todo_completed === null && todo.todo.userData.todo_pendings === null)
             dispatch(FetchDataTodo(todo.jwt.user.jwt) as any);
 
