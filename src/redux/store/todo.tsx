@@ -12,6 +12,7 @@ const defaultState:UserDataType = {
 
 }
 
+const addTodo = "addTodo";
 const updateTodo = "update";
 const deleteTodoPending = "deletePendings";
 const deleteTodoCompleted = "deleteCompleted";
@@ -19,27 +20,30 @@ const deleteTodoCompleted = "deleteCompleted";
 const uncompletedTodoCompleted = "unCompletedTodo";
 const completedTodoPendings = "completedTodo";
 
-export const Todo = (state = defaultState, action:Action<string, UserDataType | number>) => {
+export const Todo = (state = defaultState, action:Action<string, UserDataType | TodoType[] | number>) => {
     switch (action.type){
+        case addTodo:
+            return {userData: {todo_pendings: {...(action.payload as UserDataType).userData.todo_pendings, ...(action.payload as TodoType[])}, todo_completed: (action.payload as UserDataType).userData.todo_completed}};
         case updateTodo:
-            return {...state, userData: {todo_pendings: (action.payload as UserDataType).userData.todo_pendings, todo_completed: (action.payload as UserDataType).userData.todo_completed}}
+            return {...state, userData: {todo_pendings: (action.payload as UserDataType).userData.todo_pendings, todo_completed: (action.payload as UserDataType).userData.todo_completed}};
         case deleteTodoPending:
-            return {userData: {todo_pendings: (state.userData.todo_pendings as TodoType[]).filter((todo) => todo.id !== (action.payload as number)), todo_completed: state.userData.todo_completed}}
+            return {userData: {todo_pendings: (state.userData.todo_pendings as TodoType[]).filter((todo) => todo.id !== (action.payload as number)), todo_completed: state.userData.todo_completed}};
         case deleteTodoCompleted:
-            return {userData: {todo_completed: (state.userData.todo_completed as TodoType[]).filter((todo) => todo.id !== (action.payload as number)), todo_pendings: state.userData.todo_pendings}}
+            return {userData: {todo_completed: (state.userData.todo_completed as TodoType[]).filter((todo) => todo.id !== (action.payload as number)), todo_pendings: state.userData.todo_pendings}};
         case uncompletedTodoCompleted:
-            const unComplete = (state.userData.todo_completed as TodoType[]).filter((todo) => todo.id === (action.payload as number))
+            const unComplete = (state.userData.todo_completed as TodoType[]).filter((todo) => todo.id === (action.payload as number));
             unComplete[0].completed = 0;
-        return {userData: {todo_pendings: [...unComplete, ...(state.userData.todo_pendings as TodoType[])], todo_completed: (state.userData.todo_completed as TodoType[]).filter((todo) => todo.id !== (action.payload as number))}}
+        return {userData: {todo_pendings: [...unComplete, ...(state.userData.todo_pendings as TodoType[])], todo_completed: (state.userData.todo_completed as TodoType[]).filter((todo) => todo.id !== (action.payload as number))}};
        case completedTodoPendings:
-            const complete = (state.userData.todo_pendings as TodoType[]).filter((todo) => todo.id === (action.payload as number))
+            const complete = (state.userData.todo_pendings as TodoType[]).filter((todo) => todo.id === (action.payload as number));
             complete[0].completed = 1;
-            return {userData: {todo_completed: [...complete, ...(state.userData.todo_completed as TodoType[])], todo_pendings: (state.userData.todo_pendings as TodoType[]).filter((todo) => todo.id !== (action.payload as number))}}
+            return {userData: {todo_completed: [...complete, ...(state.userData.todo_completed as TodoType[])], todo_pendings: (state.userData.todo_pendings as TodoType[]).filter((todo) => todo.id !== (action.payload as number))}};
         default:
             return state;
     }
 }
 
+export const addTodoSync = (payload: TodoType[]) => ({ type: updateTodo, payload });
 export const updateTodoAsync = (payload: UserDataType[]) => ({ type: updateTodo, payload });
 export const deletePending = (payload: number) => ({ type: deleteTodoPending, payload });
 export const deleteCompleted = (payload: number) => ({ type: deleteTodoCompleted, payload });
