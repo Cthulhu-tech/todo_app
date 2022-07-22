@@ -1,11 +1,10 @@
-import { addTodoSync } from "../../../redux/store/todo";
-import { Timestamp } from "../../../utils/timetampAdd";
 import { ReduxStore } from "../../../interface/redux";
 import { useEffect, useState } from "react";
 import { NavLink } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
 import styles from "./add.module.scss";
+import { FetchDataTodo } from "../../../redux/async/todoLoad";
 
 export const AddInput = () => {
 
@@ -31,7 +30,7 @@ export const AddInput = () => {
 
         }).then(() => {
 
-            dispatch(addTodoSync([{id: Math.random(), user_id: 0, todo_time_start: Timestamp(), todo_text: input.text, completed: 0}]));
+            dispatch(FetchDataTodo(jwt) as any);
 
         });
 
