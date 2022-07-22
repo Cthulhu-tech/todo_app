@@ -23,7 +23,7 @@ const completedTodoPendings = "completedTodo";
 export const Todo = (state = defaultState, action:Action<string, UserDataType | TodoType[] | number>) => {
     switch (action.type){
         case addTodo:
-            return {userData: {todo_pendings: {...(action.payload as UserDataType).userData.todo_pendings, ...(action.payload as TodoType[])}, todo_completed: (action.payload as UserDataType).userData.todo_completed}};
+            return {...state, userData: {todo_pendings: {...(action.payload as UserDataType).userData.todo_pendings, ...(action.payload as TodoType[])}, todo_completed: (action.payload as UserDataType).userData.todo_completed}};
         case updateTodo:
             return {...state, userData: {todo_pendings: (action.payload as UserDataType).userData.todo_pendings, todo_completed: (action.payload as UserDataType).userData.todo_completed}};
         case deleteTodoPending:
