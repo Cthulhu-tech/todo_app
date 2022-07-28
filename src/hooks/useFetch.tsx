@@ -1,15 +1,15 @@
-import { useEffect, useState } from "react"
+import { useEffect, useState } from "react";
 
-export const useFetch = (url: string) => {
+export const useFetch = (method: string = 'POST') => {
 
     const [data, setData] = useState<any>();
     const [error, setError] = useState<Error>();
     const [load, setLoad] = useState(true);
 
-    useEffect(() => {
+    const FetchData = (url: string) => {
 
         fetch(process.env.REACT_APP_SERVER + url, {
-            method: 'POST',
+            method,
             mode: 'cors',
             redirect: 'follow',
             credentials: "include",
@@ -33,8 +33,10 @@ export const useFetch = (url: string) => {
 
         })
 
-    }, []);
+    }
 
-    return {load, data, error};
+    useEffect(() => {}, []);
+
+    return {load, data, error, FetchData};
 
 }
