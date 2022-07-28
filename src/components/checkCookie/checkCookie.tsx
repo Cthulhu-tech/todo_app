@@ -1,52 +1,33 @@
 import { Navigate, useLocation, Outlet } from 'react-router';
 import { updateToken } from "../../redux/store/jwt";
 import { Error } from "../../views/error/error";
+import { useFetch } from '../../hooks/useFetch';
 import { Loading } from "../loading/loading";
-import { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
+import { useEffect } from "react";
 
 export const CheckCookie = () => {
 
     const dispatch = useDispatch();
     const location = useLocation();
-    const [load, setLoad] = useState(true);
-    const [error, setError] = useState<Error>();
 
-    useEffect(() => {
+    const {load, data, error, FetchData} = useFetch('POST');
 
-            fetch(process.env.REACT_APP_SERVER + 'refresh', {
-                method: 'POST',
-                mode: 'cors',
-                redirect: 'follow',
-                credentials: "include",
-                headers: {
-                    'Content-type': 'application/json',
-                    'Accept': 'application/json'
-                },
-            }).then((response) => {
-    
-                return response.json();
-    
-            }).then((json) => {
-    
-                setLoad(false);
+    useEffect(() => { FetchData('refresh'); },[]);
+    useEffect(() => { 
+        
+        if(data && data.length > 0) {
 
-                dispatch(updateToken({user: {
+            dispatch(updateToken({user: {
 
-                    login: json.login,
-                    jwt: json.accesstoken,
-            
-                }}));
-    
-            }).catch((err) => {
-    
-                setLoad(false);
+                login: data.login,
+                jwt: data.accesstoken,
+        
+            }}));
 
-                return setError(err);
-    
-            });
+        }
 
-    }, []);
+     }, [load]);
 
     if(load) return <Loading/>
     if(error) return <Error error={error}/>
